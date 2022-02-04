@@ -7,10 +7,9 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1..101);
 
-    println!("The secret number is: {}", secret_number);
-    
-    loop{
+    // println!("The secret number is: {}", secret_number); for debuggin if nessasary
 
+    loop{
         println!("Please input your guess... (from 1 - 100)");
 
         let mut guess = String::new();
@@ -21,7 +20,7 @@ fn main() {
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
-            Err(_) => continue,
+            Err(_) => {println!("Poorly formatted number, please try again!"); continue;}
         };
 
         match guess.cmp(&secret_number) {
